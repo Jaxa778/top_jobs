@@ -11,8 +11,10 @@ class UserRegisterController {
     final data = await http.get(uri);
     final decodedData = jsonDecode(data.body) as Map;
     final keys = decodedData.keys.toList();
+    
     return keys;
   }
+
   Future<void> setData({required String contact,required String password})async{
     final uri = Uri.parse(
       "https://topjobs-6fb40-default-rtdb.asia-southeast1.firebasedatabase.app/users/$contact.json",
@@ -20,6 +22,7 @@ class UserRegisterController {
     UsersModel usersModel = UsersModel(contact: contact, password: password);
     http.put(uri,body: jsonEncode(usersModel.models()));
   }
+
   Future<void> editPasword({
     required String contact,
     required String password,

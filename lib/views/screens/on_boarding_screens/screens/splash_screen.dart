@@ -14,7 +14,6 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    double w = ScreenSize.widthFactor(context);
     double h = ScreenSize.heightFactor(context);
     return Scaffold(
       appBar: AppBar(

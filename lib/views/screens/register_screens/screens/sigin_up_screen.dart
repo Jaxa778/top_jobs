@@ -13,7 +13,6 @@ class SiginUpScreen extends StatefulWidget {
 }
 
 class _SiginUpScreenState extends State<SiginUpScreen> {
-  @override
   bool isTrue = false;
   bool isShow = false;
   @override
