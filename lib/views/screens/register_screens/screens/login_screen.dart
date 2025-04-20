@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:top_jobs/Utils/app_images.dart';
+import 'package:top_jobs/utils/app_images.dart';
 import 'package:top_jobs/controller/user_controllers/user_register_controller.dart';
 import 'package:top_jobs/model/sign_model.dart';
 import 'package:top_jobs/views/screens/home_screen.dart';
 import 'package:top_jobs/views/screens/register_screens/screens/forgot_password_screen.dart';
 import 'package:top_jobs/views/screens/register_screens/screens/sigin_up_screen.dart';
-import 'package:top_jobs/Utils/screen_size_utils.dart';
+import 'package:top_jobs/utils/screen_size_utils.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});

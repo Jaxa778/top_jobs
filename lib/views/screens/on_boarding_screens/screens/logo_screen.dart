@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:top_jobs/Utils/app_images.dart';
+import 'package:top_jobs/utils/app_images.dart';
 import 'package:top_jobs/views/screens/on_boarding_screens/screens/splash_screen.dart';
 
 class LogoScreen extends StatefulWidget {

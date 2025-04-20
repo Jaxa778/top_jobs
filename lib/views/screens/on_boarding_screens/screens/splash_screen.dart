@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:top_jobs/Utils/app_images.dart';
-import 'package:top_jobs/Utils/screen_size_utils.dart';
+import 'package:top_jobs/utils/app_images.dart';
+import 'package:top_jobs/utils/screen_size_utils.dart';
 import 'package:top_jobs/views/screens/register_screens/screens/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
