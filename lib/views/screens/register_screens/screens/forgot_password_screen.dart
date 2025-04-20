@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:top_jobs/Utils/app_images.dart';
 import 'package:top_jobs/views/screens/register_screens/screens/check_your_email_screen.dart';
 import 'package:top_jobs/Utils/screen_size_utils.dart';
+import 'package:top_jobs/views/screens/register_screens/screens/login_screen.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -87,7 +88,16 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       SizedBox(height: 20 * h),
                       InkWell(
                         borderRadius: BorderRadius.circular(20),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return loginScreen();
+                              },
+                            ),
+                          );
+                        },
                         child: Container(
                           width: 320,
                           height: 50,

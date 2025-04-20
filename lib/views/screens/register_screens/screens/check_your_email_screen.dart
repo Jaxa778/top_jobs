@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:top_jobs/Utils/app_images.dart';
 import 'package:top_jobs/Utils/screen_size_utils.dart';
+import 'package:top_jobs/views/screens/register_screens/screens/forgot_password_screen.dart';
+import 'package:top_jobs/views/screens/register_screens/screens/login_screen.dart';
 import 'package:top_jobs/views/screens/register_screens/screens/successfully_screen.dart';
 
 class CheckYourEmailScreen extends StatefulWidget {
@@ -40,7 +42,7 @@ class _CheckYourEmailScreenState extends State<CheckYourEmailScreen> {
               ],
             ),
             SizedBox(height: 60 * h),
-            SvgPicture.asset(AppImages.undrawMessage),
+            SvgPicture.asset(AppImages.undrawMessage2),
             Padding(
               padding: const EdgeInsets.only(left: 30.0, right: 30, top: 80),
               child: Column(
@@ -74,7 +76,16 @@ class _CheckYourEmailScreenState extends State<CheckYourEmailScreen> {
                       SizedBox(height: 20 * h),
                       InkWell(
                         borderRadius: BorderRadius.circular(20),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return loginScreen();
+                              },
+                            ),
+                          );
+                        },
                         child: Container(
                           width: 320,
                           height: 50,
@@ -94,7 +105,19 @@ class _CheckYourEmailScreenState extends State<CheckYourEmailScreen> {
               ),
             ),
             SizedBox(height: 20 * h),
-            SvgPicture.asset(AppImages.youHave),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ForgotPasswordScreen();
+                    },
+                  ),
+                );
+              },
+              child: SvgPicture.asset(AppImages.youHave),
+            ),
           ],
         ),
       ),

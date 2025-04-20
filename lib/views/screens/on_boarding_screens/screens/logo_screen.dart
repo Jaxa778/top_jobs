@@ -18,7 +18,8 @@ class _LogoState extends State<LogoScreen> {
     Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (ctx) => SplashScreen()),
+        
+        MaterialPageRoute(builder: (context) => SplashScreen()),
       );
     });
     return Scaffold(

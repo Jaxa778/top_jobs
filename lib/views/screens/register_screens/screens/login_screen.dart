@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:top_jobs/Utils/app_images.dart';
+import 'package:top_jobs/views/screens/register_screens/screens/forgot_password_screen.dart';
 import 'package:top_jobs/views/screens/register_screens/screens/sigin_up_screen.dart';
 import 'package:top_jobs/Utils/screen_size_utils.dart';
 
@@ -90,14 +91,6 @@ class _loginScreenState extends State<loginScreen> {
                     children: [
                       Row(
                         children: [
-                          // Container(
-                          //   width: 25,
-                          //   height: 25,
-                          //   decoration: BoxDecoration(
-                          //     borderRadius: BorderRadius.circular(5),
-                          //     color: Color(0xffE6E1FF),
-                          //   ),
-                          // ),
                           Checkbox(
                             value: isTrue,
                             onChanged: (value) {
@@ -110,7 +103,19 @@ class _loginScreenState extends State<loginScreen> {
                           SvgPicture.asset(AppImages.rememberMe),
                         ],
                       ),
-                      SvgPicture.asset(AppImages.forgotPassword),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ForgotPasswordScreen();
+                              },
+                            ),
+                          );
+                        },
+                        child: SvgPicture.asset(AppImages.forgotPassword),
+                      ),
                     ],
                   ),
                 ],
@@ -122,10 +127,10 @@ class _loginScreenState extends State<loginScreen> {
                 InkWell(
                   borderRadius: BorderRadius.circular(20),
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (ctx) => SiginUpScreen()),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (ctx) => SiginUpScreen()),
+                    // );
                   },
                   child: Container(
                     width: 270,
@@ -136,14 +141,23 @@ class _loginScreenState extends State<loginScreen> {
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Image.asset(AppImages.loginScreen)],
+                      children: [Image.asset(AppImages.login)],
                     ),
                   ),
                 ),
                 SizedBox(height: 20 * h),
                 InkWell(
                   borderRadius: BorderRadius.circular(20),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return SiginUpScreen();
+                        },
+                      ),
+                    );
+                  },
                   child: Container(
                     width: 270,
                     height: 50,
@@ -167,7 +181,19 @@ class _loginScreenState extends State<loginScreen> {
                   ),
                 ),
                 SizedBox(height: 20 * h),
-                SvgPicture.asset(AppImages.youDontHave),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return SiginUpScreen();
+                        },
+                      ),
+                    );
+                  },
+                  child: SvgPicture.asset(AppImages.youDontHave),
+                ),
               ],
             ),
           ],

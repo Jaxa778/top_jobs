@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:top_jobs/Utils/app_images.dart';
 import 'package:top_jobs/Utils/screen_size_utils.dart';
+import 'package:top_jobs/views/screens/register_screens/screens/login_screen.dart';
 
 class successfullyScreen extends StatefulWidget {
   const successfullyScreen({super.key});
@@ -49,12 +50,7 @@ class _successfullyScreenState extends State<successfullyScreen> {
                     children: [
                       InkWell(
                         borderRadius: BorderRadius.circular(20),
-                        onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(builder: (ctx) => SiginUpScreen()),
-                          // );
-                        },
+                        onTap: () {},
                         child: Container(
                           width: 320,
                           height: 50,
@@ -71,7 +67,16 @@ class _successfullyScreenState extends State<successfullyScreen> {
                       SizedBox(height: 20 * h),
                       InkWell(
                         borderRadius: BorderRadius.circular(20),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return loginScreen();
+                              },
+                            ),
+                          );
+                        },
                         child: Container(
                           width: 320,
                           height: 50,
@@ -90,8 +95,6 @@ class _successfullyScreenState extends State<successfullyScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 20 * h),
-            SvgPicture.asset(AppImages.youHave),
           ],
         ),
       ),

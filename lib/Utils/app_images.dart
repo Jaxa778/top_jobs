@@ -24,24 +24,24 @@ class AppImages {
   static const create = "assets/svgs/Create.svg";
   static const reset = "assets/svgs/Reset Password.svg";
   static const forgot = "assets/svgs/Forgot Password_2.svg";
-  static const back = "assets/svgs/Back to loginScreen.svg";
+  static const back = "assets/svgs/Back to Login.svg";
   static const group67 = "assets/svgs/Group 67.svg";
   static const toReset = "assets/svgs/To reset your.svg";
   static const check = "assets/svgs/Check Your Email.svg";
   static const weHave = "assets/svgs/We have sent.svg";
   static const openYour = "assets/svgs/Open Your Email.svg";
-  static const undrawMessage = "assets/svgs/undrawMessage_sent_re_q2kl 1.svg";
+  static const undrawMessage = "assets/svgs/undraw_message_sent_re_q2kl 1.svg";
   static const youHave = "assets/svgs/You have.svg";
   static const yourPassword = "assets/svgs/Your password.svg";
   static const undrawMessage2 =
-      "assets/svgs/undrawMessage_sent_re_q2kl 1 (1).svg";
+      "assets/svgs/undraw_message_sent_re_q2kl 1 (1).svg";
   static const continue2 = "assets/svgs/Continue.svg";
 
-  static const successfullyScreen = "assets/svgs/successfullyScreen.svg";
+  static const successfullyScreen = "assets/svgs/Successfully.svg";
 
   // img
   // // // // // //
-  static const loginScreen = 'assets/images/loginScreen.png';
+  static const login = 'assets/images/Login.png';
   static const google = 'assets/images/google 2.png';
   static const grouph75 = 'assets/images/Group 75.png';
 }

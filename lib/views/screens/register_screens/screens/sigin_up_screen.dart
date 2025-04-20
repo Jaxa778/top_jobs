@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:top_jobs/Utils/app_images.dart';
 import 'package:top_jobs/Utils/screen_size_utils.dart';
 import 'package:top_jobs/views/screens/register_screens/screens/forgot_password_screen.dart';
+import 'package:top_jobs/views/screens/register_screens/screens/login_screen.dart';
 
 class SiginUpScreen extends StatefulWidget {
   const SiginUpScreen({super.key});
@@ -123,7 +124,19 @@ class _SiginUpScreenState extends State<SiginUpScreen> {
                           SvgPicture.asset(AppImages.rememberMe),
                         ],
                       ),
-                      SvgPicture.asset(AppImages.forgotPassword),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ForgotPasswordScreen();
+                              },
+                            ),
+                          );
+                        },
+                        child: SvgPicture.asset(AppImages.forgotPassword),
+                      ),
                     ],
                   ),
                 ],
@@ -135,11 +148,9 @@ class _SiginUpScreenState extends State<SiginUpScreen> {
                 InkWell(
                   borderRadius: BorderRadius.circular(20),
                   onTap: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(
-                        builder: (ctx) => ForgotPasswordScreen(),
-                      ),
+                      MaterialPageRoute(builder: (ctx) => loginScreen()),
                     );
                   },
                   child: Container(
@@ -151,7 +162,7 @@ class _SiginUpScreenState extends State<SiginUpScreen> {
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Image.asset(AppImages.loginScreen)],
+                      children: [SvgPicture.asset(AppImages.signUp)],
                     ),
                   ),
                 ),
