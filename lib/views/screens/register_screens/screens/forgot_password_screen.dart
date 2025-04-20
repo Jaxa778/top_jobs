@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:top_jobs/Utils/app_images.dart';
+import 'package:top_jobs/controller/user_controllers/user_register_controller.dart';
+import 'package:top_jobs/model/sign_model.dart';
 import 'package:top_jobs/views/screens/register_screens/screens/check_your_email_screen.dart';
 import 'package:top_jobs/Utils/screen_size_utils.dart';
 import 'package:top_jobs/views/screens/register_screens/screens/login_screen.dart';
@@ -13,6 +15,9 @@ class ForgotPasswordScreen extends StatefulWidget {
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  final userRegisterController = UserRegisterController();
+  SignModel? loginUser;
+  List<SignModel> allUsers = [];
   //GlobalKey:
   final formKey = GlobalKey<FormState>();
 
@@ -22,6 +27,90 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   //Variables:
   bool isTrue = false;
   bool isShow = false;
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    loadUsers();
+  }
+
+  void loadUsers() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      // Future'dan ma'lumotlarni olish
+      List<SignModel> users = await userRegisterController.getRegisterData();
+      setState(() {
+        allUsers = users;
+        isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Ma\'lumotlarni yuklashda xatolik: $e')),
+        );
+      }
+    }
+  }
+
+  // Login funksiyasi - foydalanuvchi ma'lumotlarini tekshirish uchun
+  void login() async {
+    if (formKey.currentState!.validate()) {
+      setState(() {
+        isLoading = true;
+      });
+
+      // Agar ma'lumotlar yuklanmagan bo'lsa, yuklash
+      if (allUsers.isEmpty) {
+        try {
+          allUsers = await userRegisterController.getRegisterData();
+        } catch (e) {
+          setState(() {
+            isLoading = false;
+          });
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Ma\'lumotlarni yuklashda xatolik: $e')),
+            );
+          }
+          return; // Xatolik bo'lsa, funksiyadan chiqish
+        }
+      }
+
+      // Foydalanuvchini topish
+      SignModel? foundUser;
+      for (var user in allUsers) {
+        if (user.contact == _registerEmailController.text) {
+          foundUser = user;
+          break;
+        }
+      }
+
+      setState(() {
+        loginUser = foundUser;
+        isLoading = false;
+      });
+
+      // Foydalanuvchi topilgan-topilmaganligiga qarab harakat qilish
+      if (loginUser == null && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Bunday foydalanuvchi topilmadi.')),
+        );
+      } else {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => CheckYourEmailScreen(email: _registerEmailController.text,)),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double w = ScreenSize.widthFactor(context);
@@ -86,16 +175,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       children: [
                         InkWell(
                           borderRadius: BorderRadius.circular(20),
-                          onTap: () {
-                            if (formKey.currentState!.validate()) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (ctx) => CheckYourEmailScreen(),
-                                ),
-                              );
-                            }
-                          },
+                          onTap: login,
                           child: Container(
                             width: 320,
                             height: 50,

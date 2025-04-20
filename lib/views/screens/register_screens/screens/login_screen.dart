@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:top_jobs/Utils/app_images.dart';
+import 'package:top_jobs/controller/user_controllers/user_register_controller.dart';
+import 'package:top_jobs/model/sign_model.dart';
+import 'package:top_jobs/views/screens/home_screen.dart';
 import 'package:top_jobs/views/screens/register_screens/screens/forgot_password_screen.dart';
 import 'package:top_jobs/views/screens/register_screens/screens/sigin_up_screen.dart';
 import 'package:top_jobs/Utils/screen_size_utils.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final userRegisterController = UserRegisterController();
+  SignModel? loginUser;
+  List<SignModel> allUsers = [];
   //GlobalKey:
   final formKey = GlobalKey<FormState>();
 
@@ -23,6 +29,92 @@ class _LoginScreenState extends State<LoginScreen> {
   //Variables:
   bool isTrue = false;
   bool isShow = false;
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    loadUsers();
+  }
+
+  void loadUsers() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      // Future'dan ma'lumotlarni olish
+      List<SignModel> users = await userRegisterController.getRegisterData();
+      setState(() {
+        allUsers = users;
+        isLoading = false;
+      });
+
+    } catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Ma\'lumotlarni yuklashda xatolik: $e')),
+        );
+      }
+    }
+  }
+
+  // Login funksiyasi - foydalanuvchi ma'lumotlarini tekshirish uchun
+  void login() async {
+    if (formKey.currentState!.validate()) {
+      setState(() {
+        isLoading = true;
+      });
+
+      // Agar ma'lumotlar yuklanmagan bo'lsa, yuklash
+      if (allUsers.isEmpty) {
+        try {
+          allUsers = await userRegisterController.getRegisterData();
+        } catch (e) {
+          setState(() {
+            isLoading = false;
+          });
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Ma\'lumotlarni yuklashda xatolik: $e')),
+            );
+          }
+          return; // Xatolik bo'lsa, funksiyadan chiqish
+        }
+      }
+
+      // Foydalanuvchini topish
+      SignModel? foundUser;
+      for (var user in allUsers) {
+        if (user.contact == _registerEmailController.text &&
+            user.password == _registerPasswordController.text) {
+          foundUser = user;
+          break;
+        }
+      }
+
+      setState(() {
+        loginUser = foundUser;
+        isLoading = false;
+      });
+
+      // Foydalanuvchi topilgan-topilmaganligiga qarab harakat qilish
+      if (loginUser == null && mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Login yoki parol noto\'g\'ri')));
+      } else {
+        // Foydalanuvchi topildi, asosiy ekranga o'tish
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -161,12 +253,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   InkWell(
                     borderRadius: BorderRadius.circular(20),
-                    onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (ctx) => SiginUpScreen()),
-                      // );
-                    },
+                    onTap: login,
                     child: Container(
                       width: 270,
                       height: 50,

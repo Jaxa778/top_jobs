@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:top_jobs/Utils/app_images.dart';
 import 'package:top_jobs/Utils/screen_size_utils.dart';
+import 'package:top_jobs/views/screens/home_screen.dart';
 import 'package:top_jobs/views/screens/register_screens/screens/login_screen.dart';
 
-class successfullyScreen extends StatefulWidget {
-  const successfullyScreen({super.key});
+class SuccessfullyScreen extends StatefulWidget {
+  const SuccessfullyScreen({super.key});
 
   @override
-  State<successfullyScreen> createState() => _successfullyScreenState();
+  State<SuccessfullyScreen> createState() => _SuccessfullyScreenState();
 }
 
-class _successfullyScreenState extends State<successfullyScreen> {
+class _SuccessfullyScreenState extends State<SuccessfullyScreen> {
   bool isTrue = false;
   bool isShow = false;
   @override
@@ -50,7 +51,14 @@ class _successfullyScreenState extends State<successfullyScreen> {
                     children: [
                       InkWell(
                         borderRadius: BorderRadius.circular(20),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomeScreen(),
+                            ),
+                          );
+                        },
                         child: Container(
                           width: 320,
                           height: 50,

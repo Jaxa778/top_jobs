@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:top_jobs/Utils/app_images.dart';
 import 'package:top_jobs/Utils/screen_size_utils.dart';
+import 'package:top_jobs/controller/user_controllers/user_register_controller.dart';
 import 'package:top_jobs/views/screens/register_screens/screens/forgot_password_screen.dart';
 import 'package:top_jobs/views/screens/register_screens/screens/login_screen.dart';
 
 class SiginUpScreen extends StatefulWidget {
-  const SiginUpScreen({super.key});
+  SiginUpScreen({super.key});
+
+  final userRegisterController = UserRegisterController();
 
   @override
   State<SiginUpScreen> createState() => _SiginUpScreenState();
@@ -24,6 +27,7 @@ class _SiginUpScreenState extends State<SiginUpScreen> {
   //Variables:
   bool isTrue = false;
   bool isShow = false;
+
   @override
   Widget build(BuildContext context) {
     double w = ScreenSize.widthFactor(context);
@@ -144,20 +148,12 @@ class _SiginUpScreenState extends State<SiginUpScreen> {
                         ),
                       ),
                     ),
-                    // SizedBox(height: 20 * h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
-                            // Container(
-                            //   width: 25,
-                            //   height: 25,
-                            //   decoration: BoxDecoration(
-                            //     borderRadius: BorderRadius.circular(5),
-                            //     color: Color(0xffE6E1FF),
-                            //   ),
-                            // ),
+                            
                             Checkbox(
                               value: isTrue,
                               onChanged: (value) {
@@ -193,6 +189,10 @@ class _SiginUpScreenState extends State<SiginUpScreen> {
                     borderRadius: BorderRadius.circular(20),
                     onTap: () {
                       if (formKey.currentState!.validate()) {
+                        widget.userRegisterController.saveRegisterData(
+                          email: _registerEmailController.text,
+                          password: _registerPasswordController.text,
+                        );
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (ctx) => LoginScreen()),
@@ -226,20 +226,38 @@ class _SiginUpScreenState extends State<SiginUpScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(AppImages.google),
-                              SizedBox(width: 10 * h),
-                              SvgPicture.asset(AppImages.signInWithGoogle),
-                            ],
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoginScreen(),
+                                ),
+                              );
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(AppImages.google),
+                                SizedBox(width: 10 * h),
+                                SvgPicture.asset(AppImages.signInWithGoogle),
+                              ],
+                            ),
                           ),
                         ],
                       ),
                     ),
                   ),
                   SizedBox(height: 20 * h),
-                  SvgPicture.asset(AppImages.youDontHave),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                      );
+                    },
+                    child: SvgPicture.asset(AppImages.youDontHave),
+                  ),
                 ],
               ),
             ],
