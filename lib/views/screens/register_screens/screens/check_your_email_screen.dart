@@ -81,7 +81,7 @@ class _CheckYourEmailScreenState extends State<CheckYourEmailScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                return loginScreen();
+                                return LoginScreen();
                               },
                             ),
                           );

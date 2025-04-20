@@ -72,7 +72,7 @@ class _successfullyScreenState extends State<successfullyScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                return loginScreen();
+                                return LoginScreen();
                               },
                             ),
                           );

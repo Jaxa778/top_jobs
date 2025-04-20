@@ -2,16 +2,25 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:top_jobs/model/admins/admin_model.dart';
+import 'package:top_jobs/model/sign_model.dart';
 
-class UserRegisterController {
-  Future<List> getData() async {
+class AdminRegisterDatasource {
+  Future<List<SignModel>> getData() async {
+    List<SignModel> usersSign = [];
     final uri = Uri.parse(
       "https://topjobs-6fb40-default-rtdb.asia-southeast1.firebasedatabase.app/admins.json",
     );
+
     final data = await http.get(uri);
     final decodedData = jsonDecode(data.body) as Map;
     final keys = decodedData.keys.toList();
-    return keys;
+    for (var i in keys) {
+      decodedData[i]["sign"]["id"] = i;
+      usersSign.add(
+        SignModel.fromJson(decodedData[i]["sign"]),
+      );
+    }
+    return usersSign;
   }
 
   Future<void> setData({
@@ -19,13 +28,18 @@ class UserRegisterController {
     required String password,
   }) async {
     final uri = Uri.parse(
-      "https://topjobs-6fb40-default-rtdb.asia-southeast1.firebasedatabase.app/admins/$contact.json",
+      "https://topjobs-6fb40-default-rtdb.asia-southeast1.firebasedatabase.app/admins.json",
     );
-    AdminModel usersModel = AdminModel(
+
+    AdminModel adminModel = AdminModel(
       contact: contact,
       password: password,
     );
-    http.put(uri, body: jsonEncode(usersModel.models()));
+
+    await http.post(
+      uri,
+      body: jsonEncode(adminModel.models()),
+    );
   }
 
   Future<void> editPasword({
