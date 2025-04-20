@@ -1,18 +1,16 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:top_jobs/Utils/app_images.dart';
-import 'package:top_jobs/views/screens/register_screens/screens/successfully.dart';
 import 'package:top_jobs/Utils/screen_size_utils.dart';
 
-class CheckYourEmail extends StatefulWidget {
-  const CheckYourEmail({super.key});
+class successfullyScreen extends StatefulWidget {
+  const successfullyScreen({super.key});
 
   @override
-  State<CheckYourEmail> createState() => _CheckYourEmailState();
+  State<successfullyScreen> createState() => _successfullyScreenState();
 }
 
-class _CheckYourEmailState extends State<CheckYourEmail> {
+class _successfullyScreenState extends State<successfullyScreen> {
   bool isTrue = false;
   bool isShow = false;
   @override
@@ -33,15 +31,15 @@ class _CheckYourEmailState extends State<CheckYourEmail> {
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SvgPicture.asset(AppImages.check),
+                    SvgPicture.asset(AppImages.successfullyScreen),
                     SizedBox(height: 15 * h),
-                    SvgPicture.asset(AppImages.we_Have),
+                    SvgPicture.asset(AppImages.yourPassword),
                   ],
                 ),
               ],
             ),
             SizedBox(height: 60 * h),
-            SvgPicture.asset(AppImages.undraw_Message),
+            SvgPicture.asset(AppImages.undrawMessage2),
             Padding(
               padding: const EdgeInsets.only(left: 30.0, right: 30, top: 80),
               child: Column(
@@ -52,10 +50,10 @@ class _CheckYourEmailState extends State<CheckYourEmail> {
                       InkWell(
                         borderRadius: BorderRadius.circular(20),
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (ctx) => Successfully()),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(builder: (ctx) => SiginUpScreen()),
+                          // );
                         },
                         child: Container(
                           width: 320,
@@ -66,7 +64,7 @@ class _CheckYourEmailState extends State<CheckYourEmail> {
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [SvgPicture.asset(AppImages.open_Your)],
+                            children: [SvgPicture.asset(AppImages.continue2)],
                           ),
                         ),
                       ),
@@ -93,7 +91,7 @@ class _CheckYourEmailState extends State<CheckYourEmail> {
               ),
             ),
             SizedBox(height: 20 * h),
-            SvgPicture.asset(AppImages.you_Have),
+            SvgPicture.asset(AppImages.youHave),
           ],
         ),
       ),

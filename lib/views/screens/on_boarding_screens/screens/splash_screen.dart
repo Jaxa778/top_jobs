@@ -1,9 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:top_jobs/Utils/app_images.dart';
 import 'package:top_jobs/Utils/screen_size_utils.dart';
-import 'package:top_jobs/views/screens/register_screens/screens/login.dart';
+import 'package:top_jobs/views/screens/register_screens/screens/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -43,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
               children: [
                 SvgPicture.asset(AppImages.job),
                 SizedBox(height: 15),
-                SvgPicture.asset(AppImages.explore_All),
+                SvgPicture.asset(AppImages.exploreAll),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
@@ -63,7 +62,9 @@ class _SplashScreenState extends State<SplashScreen> {
                             onPressed: () {
                               Navigator.pushReplacement(
                                 context,
-                                MaterialPageRoute(builder: (ctx) => Login()),
+                                MaterialPageRoute(
+                                  builder: (ctx) => loginScreen(),
+                                ),
                               );
                             },
                             icon: SvgPicture.asset(AppImages.vector6),

@@ -1,18 +1,17 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:top_jobs/Utils/app_images.dart';
-import 'package:top_jobs/views/screens/register_screens/screens/check_your_email.dart';
+import 'package:top_jobs/views/screens/register_screens/screens/check_your_email_screen.dart';
 import 'package:top_jobs/Utils/screen_size_utils.dart';
 
-class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({super.key});
+class ForgotPasswordScreen extends StatefulWidget {
+  const ForgotPasswordScreen({super.key});
 
   @override
-  State<ForgotPassword> createState() => _ForgotPasswordState();
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
 }
 
-class _ForgotPasswordState extends State<ForgotPassword> {
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   bool isTrue = false;
   bool isShow = false;
   @override
@@ -35,7 +34,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   children: [
                     SvgPicture.asset(AppImages.forgot),
                     SizedBox(height: 15 * h),
-                    SvgPicture.asset(AppImages.to_Reset),
+                    SvgPicture.asset(AppImages.toReset),
                   ],
                 ),
               ],
@@ -68,7 +67,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (ctx) => CheckYourEmail(),
+                              builder: (ctx) => CheckYourEmailScreen(),
                             ),
                           );
                         },

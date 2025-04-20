@@ -4,14 +4,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:top_jobs/Utils/app_images.dart';
 import 'package:top_jobs/views/screens/on_boarding_screens/screens/splash_screen.dart';
 
-class Logo extends StatefulWidget {
-  const Logo({super.key});
+class LogoScreen extends StatefulWidget {
+  const LogoScreen({super.key});
 
   @override
-  State<Logo> createState() => _LogoState();
+  State<LogoScreen> createState() => _LogoState();
 }
 
-class _LogoState extends State<Logo> {
+class _LogoState extends State<LogoScreen> {
   
   @override
   Widget build(BuildContext context) {

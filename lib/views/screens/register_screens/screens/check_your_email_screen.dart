@@ -1,18 +1,18 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:top_jobs/Utils/app_images.dart';
 import 'package:top_jobs/Utils/screen_size_utils.dart';
+import 'package:top_jobs/views/screens/register_screens/screens/successfully_screen.dart';
 
-class Successfully extends StatefulWidget {
-  const Successfully({super.key});
+class CheckYourEmailScreen extends StatefulWidget {
+  const CheckYourEmailScreen({super.key});
 
   @override
-  State<Successfully> createState() => _SuccessfullyState();
+  State<CheckYourEmailScreen> createState() => _CheckYourEmailScreenState();
 }
 
-class _SuccessfullyState extends State<Successfully> {
-   bool isTrue = false;
+class _CheckYourEmailScreenState extends State<CheckYourEmailScreen> {
+  bool isTrue = false;
   bool isShow = false;
   @override
   Widget build(BuildContext context) {
@@ -32,15 +32,15 @@ class _SuccessfullyState extends State<Successfully> {
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SvgPicture.asset(AppImages.successfully),
+                    SvgPicture.asset(AppImages.check),
                     SizedBox(height: 15 * h),
-                    SvgPicture.asset(AppImages.your_Password),
+                    SvgPicture.asset(AppImages.weHave),
                   ],
                 ),
               ],
             ),
             SizedBox(height: 60 * h),
-            SvgPicture.asset(AppImages.undraw_Message2),
+            SvgPicture.asset(AppImages.undrawMessage),
             Padding(
               padding: const EdgeInsets.only(left: 30.0, right: 30, top: 80),
               child: Column(
@@ -51,10 +51,12 @@ class _SuccessfullyState extends State<Successfully> {
                       InkWell(
                         borderRadius: BorderRadius.circular(20),
                         onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(builder: (ctx) => SiginUp()),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (ctx) => successfullyScreen(),
+                            ),
+                          );
                         },
                         child: Container(
                           width: 320,
@@ -65,7 +67,7 @@ class _SuccessfullyState extends State<Successfully> {
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [SvgPicture.asset(AppImages.continue2)],
+                            children: [SvgPicture.asset(AppImages.openYour)],
                           ),
                         ),
                       ),
@@ -92,7 +94,7 @@ class _SuccessfullyState extends State<Successfully> {
               ),
             ),
             SizedBox(height: 20 * h),
-            SvgPicture.asset(AppImages.you_Have),
+            SvgPicture.asset(AppImages.youHave),
           ],
         ),
       ),

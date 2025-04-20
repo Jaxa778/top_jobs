@@ -1,18 +1,17 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:top_jobs/Utils/app_images.dart';
-import 'package:top_jobs/views/screens/register_screens/screens/forgot_password.dart';
 import 'package:top_jobs/Utils/screen_size_utils.dart';
+import 'package:top_jobs/views/screens/register_screens/screens/forgot_password_screen.dart';
 
-class SiginUp extends StatefulWidget {
-  const SiginUp({super.key});
+class SiginUpScreen extends StatefulWidget {
+  const SiginUpScreen({super.key});
 
   @override
-  State<SiginUp> createState() => _SiginUpState();
+  State<SiginUpScreen> createState() => _SiginUpScreenState();
 }
 
-class _SiginUpState extends State<SiginUp> {
+class _SiginUpScreenState extends State<SiginUpScreen> {
   @override
   bool isTrue = false;
   bool isShow = false;
@@ -47,7 +46,7 @@ class _SiginUpState extends State<SiginUp> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SvgPicture.asset(AppImages.full_Name),
+                  SvgPicture.asset(AppImages.fullName),
                   SizedBox(height: 10 * h),
                   TextFormField(
                     decoration: InputDecoration(
@@ -121,10 +120,10 @@ class _SiginUpState extends State<SiginUp> {
                             },
                           ),
                           SizedBox(width: w * 15),
-                          SvgPicture.asset(AppImages.remember_Me),
+                          SvgPicture.asset(AppImages.rememberMe),
                         ],
                       ),
-                      SvgPicture.asset(AppImages.forgot_Password),
+                      SvgPicture.asset(AppImages.forgotPassword),
                     ],
                   ),
                 ],
@@ -138,7 +137,9 @@ class _SiginUpState extends State<SiginUp> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (ctx) => ForgotPassword()),
+                      MaterialPageRoute(
+                        builder: (ctx) => ForgotPasswordScreen(),
+                      ),
                     );
                   },
                   child: Container(
@@ -150,7 +151,7 @@ class _SiginUpState extends State<SiginUp> {
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Image.asset(AppImages.login)],
+                      children: [Image.asset(AppImages.loginScreen)],
                     ),
                   ),
                 ),
@@ -173,7 +174,7 @@ class _SiginUpState extends State<SiginUp> {
                           children: [
                             Image.asset(AppImages.google),
                             SizedBox(width: 10 * h),
-                            SvgPicture.asset(AppImages.sign_In_With_Google),
+                            SvgPicture.asset(AppImages.signInWithGoogle),
                           ],
                         ),
                       ],
@@ -181,7 +182,7 @@ class _SiginUpState extends State<SiginUp> {
                   ),
                 ),
                 SizedBox(height: 20 * h),
-                SvgPicture.asset(AppImages.you_Dont_Have),
+                SvgPicture.asset(AppImages.youDontHave),
               ],
             ),
           ],

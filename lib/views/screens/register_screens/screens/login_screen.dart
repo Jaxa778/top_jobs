@@ -1,18 +1,17 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:top_jobs/Utils/app_images.dart';
-import 'package:top_jobs/views/screens/register_screens/screens/sigin_up.dart';
+import 'package:top_jobs/views/screens/register_screens/screens/sigin_up_screen.dart';
 import 'package:top_jobs/Utils/screen_size_utils.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class loginScreen extends StatefulWidget {
+  const loginScreen({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<loginScreen> createState() => _loginScreenState();
 }
 
-class _LoginState extends State<Login> {
+class _loginScreenState extends State<loginScreen> {
   bool isTrue = false;
   bool isShow = false;
   @override
@@ -108,10 +107,10 @@ class _LoginState extends State<Login> {
                             },
                           ),
                           SizedBox(width: w * 15),
-                          SvgPicture.asset(AppImages.remember_Me),
+                          SvgPicture.asset(AppImages.rememberMe),
                         ],
                       ),
-                      SvgPicture.asset(AppImages.forgot_Password),
+                      SvgPicture.asset(AppImages.forgotPassword),
                     ],
                   ),
                 ],
@@ -125,7 +124,7 @@ class _LoginState extends State<Login> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (ctx) => SiginUp()),
+                      MaterialPageRoute(builder: (ctx) => SiginUpScreen()),
                     );
                   },
                   child: Container(
@@ -137,7 +136,7 @@ class _LoginState extends State<Login> {
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Image.asset(AppImages.login)],
+                      children: [Image.asset(AppImages.loginScreen)],
                     ),
                   ),
                 ),
@@ -160,7 +159,7 @@ class _LoginState extends State<Login> {
                           children: [
                             Image.asset(AppImages.google),
                             SizedBox(width: 10 * h),
-                            SvgPicture.asset(AppImages.sign_In_With_Google),
+                            SvgPicture.asset(AppImages.signInWithGoogle),
                           ],
                         ),
                       ],
@@ -168,7 +167,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 SizedBox(height: 20 * h),
-                SvgPicture.asset(AppImages.you_Dont_Have),
+                SvgPicture.asset(AppImages.youDontHave),
               ],
             ),
           ],
