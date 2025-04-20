@@ -22,7 +22,7 @@ class UserProfileDatasource {
     final url = Uri.parse(
       "https://topjobs-6fb40-default-rtdb.asia-southeast1.firebasedatabase.app/users/$contact/profile.json",
     );
-    await http.patch(
+    await http.put(
       url,
       body: jsonEncode({
         "personal": personalModel.toJson(),
@@ -36,6 +36,6 @@ class UserProfileDatasource {
     final url = Uri.parse(
       "https://topjobs-6fb40-default-rtdb.asia-southeast1.firebasedatabase.app/users/$contact/profile/personal.json",
     );
-    await http.put(url, body: personalModel.toJson());
+    await http.patch(url, body: personalModel.toJson());
   }
 }
