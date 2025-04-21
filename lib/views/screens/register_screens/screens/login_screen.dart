@@ -3,13 +3,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:top_jobs/utils/app_images.dart';
 import 'package:top_jobs/controller/user_controllers/user_register_controller.dart';
 import 'package:top_jobs/model/sign_model.dart';
-import 'package:top_jobs/views/screens/home_screen.dart';
-import 'package:top_jobs/views/screens/register_screens/screens/forgot_password_screen.dart';
-import 'package:top_jobs/views/screens/register_screens/screens/sigin_up_screen.dart';
+import 'package:top_jobs/views/screens/mian_screen.dart';
+import 'package:top_jobs/views/screens/register_screens/screens/users_screens/forgot_password_user_screen.dart';
+import 'package:top_jobs/views/screens/register_screens/screens/users_screens/sigin_up_user_screen.dart';
 import 'package:top_jobs/utils/screen_size_utils.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({super.key});
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -110,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
         // Foydalanuvchi topildi, asosiy ekranga o'tish
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
+          MaterialPageRoute(builder: (context) => MainScreen()),
         );
       }
     }

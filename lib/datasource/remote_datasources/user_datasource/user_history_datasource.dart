@@ -31,12 +31,10 @@ class UserHistoryDatasource {
     await http.post(url, body: historyModel.toJson());
   }
 
-  Future<void> editData({
-    required HistoryModel historyModel,
-  }) async {
+  Future<void> delete({required String id}) async {
     final url = Uri.parse(
-      "https://topjobs-6fb40-default-rtdb.asia-southeast1.firebasedatabase.app/users/$contact/profile/history.json",
+      "https://topjobs-6fb40-default-rtdb.asia-southeast1.firebasedatabase.app/users/$contact/profile/history/$id.json",
     );
-    await http.put(url, body: historyModel.toJson());
+    await http.delete(url);
   }
 }

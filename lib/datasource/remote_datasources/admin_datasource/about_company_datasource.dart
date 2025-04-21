@@ -3,13 +3,13 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:top_jobs/model/users/personal_model.dart';
 
-class UserProfileDatasource {
+class AboutCompanyDatasource {
   final String contact;
 
-  UserProfileDatasource({required this.contact});
+  AboutCompanyDatasource({required this.contact});
   Future<PersonalModel> getData() async {
     final url = Uri.parse(
-      "https://topjobs-6fb40-default-rtdb.asia-southeast1.firebasedatabase.app/users/$contact/profile/personal.json",
+      "https://topjobs-6fb40-default-rtdb.asia-southeast1.firebasedatabase.app/admins/$contact/aboutCompany.json",
     );
     final data = await http.get(url);
     final decodedData = jsonDecode(data.body);
@@ -20,13 +20,11 @@ class UserProfileDatasource {
     required PersonalModel personalModel,
   }) async {
     final url = Uri.parse(
-      "https://topjobs-6fb40-default-rtdb.asia-southeast1.firebasedatabase.app/users/$contact/profile.json",
+      "https://topjobs-6fb40-default-rtdb.asia-southeast1.firebasedatabase.app/admins/$contact/aboutCompany.json",
     );
-    await http.put(
+    await http.patch(
       url,
-      body: jsonEncode({
-        "personal": personalModel.toJson(),
-      }),
+      body: jsonEncode({personalModel.toJson()}),
     );
   }
 
@@ -34,8 +32,8 @@ class UserProfileDatasource {
     required PersonalModel personalModel,
   }) async {
     final url = Uri.parse(
-      "https://topjobs-6fb40-default-rtdb.asia-southeast1.firebasedatabase.app/users/$contact/profile/personal.json",
+      "https://topjobs-6fb40-default-rtdb.asia-southeast1.firebasedatabase.app/admins/$contact/aboutCompany.json",
     );
-    await http.patch(url, body: personalModel.toJson());
+    await http.put(url, body: personalModel.toJson());
   }
 }

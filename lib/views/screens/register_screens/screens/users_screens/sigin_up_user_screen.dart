@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:top_jobs/utils/app_images.dart';
 import 'package:top_jobs/utils/screen_size_utils.dart';
 import 'package:top_jobs/controller/user_controllers/user_register_controller.dart';
-import 'package:top_jobs/views/screens/register_screens/screens/forgot_password_screen.dart';
+import 'package:top_jobs/views/screens/register_screens/screens/users_screens/forgot_password_user_screen.dart';
 import 'package:top_jobs/views/screens/register_screens/screens/login_screen.dart';
 
 class SiginUpScreen extends StatefulWidget {
@@ -16,6 +16,7 @@ class SiginUpScreen extends StatefulWidget {
 }
 
 class _SiginUpScreenState extends State<SiginUpScreen> {
+  
   //GlobalKey:
   final formKey = GlobalKey<FormState>();
 

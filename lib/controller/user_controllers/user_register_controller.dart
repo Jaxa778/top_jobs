@@ -1,4 +1,4 @@
-import 'package:top_jobs/datasource/user_datasource/user_register_datasource.dart';
+import 'package:top_jobs/datasource/remote_datasources/user_datasource/user_register_datasource.dart';
 import 'package:top_jobs/model/sign_model.dart';
 
 class UserRegisterController {

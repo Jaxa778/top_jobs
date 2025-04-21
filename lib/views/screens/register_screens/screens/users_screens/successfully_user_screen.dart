@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:top_jobs/utils/app_images.dart';
 import 'package:top_jobs/utils/screen_size_utils.dart';
-import 'package:top_jobs/views/screens/home_screen.dart';
+import 'package:top_jobs/views/screens/mian_screen.dart';
 import 'package:top_jobs/views/screens/register_screens/screens/login_screen.dart';
 
 class SuccessfullyScreen extends StatefulWidget {
@@ -55,7 +55,7 @@ class _SuccessfullyScreenState extends State<SuccessfullyScreen> {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => HomeScreen(),
+                              builder: (context) => MainScreen(),
                             ),
                           );
                         },
