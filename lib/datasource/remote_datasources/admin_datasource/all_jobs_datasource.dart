@@ -11,19 +11,19 @@ class AllJobsDatasource {
     );
     final data = await http.get(uri);
     final decodedData = jsonDecode(data.body) as Map;
-    
-    
-    final keys = decodedData.keys.toList();
-    print(keys);
-    for (var i in keys) {
-      List jobs =
-          (decodedData[i]["jobs"] as Map).keys.toList();
-      for (var j in jobs) {
-      print(decodedData[i]["jobs"][j]);
 
-        jobs.add(
-          JobModel.fromJson(decodedData[i]["jobs"][j]),
+    final keys = decodedData.keys.toList();
+    for (var i in keys) {
+      List keylar =
+          (decodedData[i]["jobs"] as Map).keys.toList();
+      for (var j in keylar) {
+        decodedData[i]["jobs"][j]["companyId"] = i;
+        decodedData[i]["jobs"][j]["id"]= j;
+        JobModel job = JobModel.fromJson(
+          decodedData[i]["jobs"][j],
         );
+
+        jobs.add(job);
       }
     }
     return jobs;
